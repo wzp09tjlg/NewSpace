@@ -1,5 +1,6 @@
 package com.wuzp.newspace.base;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentActivity;
@@ -31,10 +32,12 @@ public class BaseActivity extends FragmentActivity {
 
     public ApiService apiService = ApiStore.getApiService();
     private CompositeDisposable mCompositeDisposable;
+    protected Context mContext;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        mContext = this;
         EventBus.getDefault().register(this);
     }
 

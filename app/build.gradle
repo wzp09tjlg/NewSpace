@@ -17,6 +17,10 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
+    dataBinding {
+        enabled true
+    }
 }
 
 dependencies {
@@ -42,5 +46,6 @@ dependencies {
     //支持库
     compile rootProject.ext.support_dependencies["v7"]
     compile rootProject.ext.support_dependencies["v4"]
+    compile rootProject.ext.support_dependencies["recyclerView"]
     testCompile junit
 }
