@@ -10,14 +10,17 @@ import android.support.annotation.Nullable;
  */
 @SuppressWarnings("All")
 public abstract class NewActivity<B extends ViewDataBinding,P extends BasePresenter> extends BaseActivity {
-    private B binding;
-    private P presenter;
+    protected B binding;
+    protected P presenter;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this,getLayoutId());
         presenter = createPresenter();
+
+        initView();
+        initData();
     }
 
     @Override
@@ -31,4 +34,8 @@ public abstract class NewActivity<B extends ViewDataBinding,P extends BasePresen
     protected abstract int getLayoutId();
 
     protected abstract P createPresenter();
+
+    protected void initView(){}
+
+    protected void initData(){}
 }

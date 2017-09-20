@@ -41,7 +41,8 @@ dependencies {
     compile  rxjava
 
     //三方库
-    compile eventbus
+    compile eventbus  //事件库
+    compile glide     //图片库
 
     //支持库
     compile rootProject.ext.support_dependencies["v7"]
