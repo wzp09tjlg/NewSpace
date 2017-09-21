@@ -5,20 +5,5 @@ package com.wuzp.newspace.widget.Refresh;
  *  自己重写上拉加载和下拉刷新的控件
  */
 public class RefreshRecyclerView {
- //dfskjafjdkslafjksa
-    /***
-     *
-     * dfsakfdjksans
-     * dfsakfdsakln
-     * dfmsla;mfkl;das
-     * mfdlsa
-     *
-     * */
 
-
-    /****
-     * dsaf
-     *
-     *
-     * */
 }
