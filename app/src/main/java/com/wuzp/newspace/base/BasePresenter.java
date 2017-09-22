@@ -20,7 +20,7 @@ import io.reactivex.schedulers.Schedulers;
 public class BasePresenter<V>{
     private static String TAG = BasePresenter.class.getSimpleName();
 
-    private V mvpView = null;
+    public V mvpView = null;
     public ApiService apiService = ApiStore.getApiService();
     private CompositeDisposable mCompositeDisposable;
 

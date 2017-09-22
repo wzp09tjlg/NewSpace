@@ -2,6 +2,7 @@ package com.wuzp.newspace.network;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import com.wuzp.newspace.base.BaseApp;
 import com.wuzp.newspace.utils.AppUtils;
 import com.wuzp.newspace.utils.FileUtils;
@@ -41,6 +42,7 @@ public class ApiStore {
                 retrofit = new Retrofit.Builder()
                         .client(client)
                         .baseUrl(getHostUrl())
+                        .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                         .addConverterFactory(GsonConverterFactory.create(getGson()))
                         .build();
             }
@@ -61,9 +63,9 @@ public class ApiStore {
 
     private static String getHostUrl(){
       if (AppUtils.isDebug){
-         return ApiService.URL_HOST_DEBUG;
+         return ApiFinal.URL_HOST_DEBUG;
       }else{
-         return ApiService.URL_HOST;
+         return ApiFinal.URL_HOST;
       }
     }
 }

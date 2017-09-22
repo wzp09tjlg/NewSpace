@@ -26,7 +26,9 @@ public class NetInterceptor implements Interceptor {
                 .addQueryParameter("from_client", "android")//拦截器添加公参
                 .addEncodedQueryParameter("app_channel", AppUtils.getChannel())
                 .addEncodedQueryParameter("version", AppUtils.getVersionName())
-                .addEncodedQueryParameter("phone_imei", AppUtils.getIMEI());
+                .addEncodedQueryParameter("phone_imei", AppUtils.getIMEI())
+                .addEncodedQueryParameter("showapi_appid", ApiFinal.APP_ID)
+                .addEncodedQueryParameter("showapi_sign", ApiFinal.APP_SEACRET);
         // 新的请求
         Request newRequest = oldRequest.newBuilder()
                 .addHeader("Connection", "close")

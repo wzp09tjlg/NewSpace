@@ -15,6 +15,10 @@ public class GlideUtil {
     public static void load(Context context,String url,ImageView dest){
         Glide.with(context)
                 .load(url)
+                .centerCrop()
+                //防止切换图片时默认动画造成的闪烁
+                .dontAnimate()
+                .crossFade()
                 .into(dest);
     }
 
