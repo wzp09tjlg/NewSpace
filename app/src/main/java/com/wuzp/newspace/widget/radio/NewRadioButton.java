@@ -24,25 +24,25 @@ public class NewRadioButton extends AppCompatRadioButton {
     public NewRadioButton(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
         TypedArray a = context.obtainStyledAttributes(attrs,
-                R.styleable.CustomRadioButton);
+                R.styleable.NewRadioButton);
 
         int n = a.getIndexCount();
         for (int i = 0; i < n; i++) {
             int attr = a.getIndex(i);
             switch (attr) {
-                case R.styleable.CustomRadioButton_drawableSize:
-                    mDrawableSize = a.getDimensionPixelSize(R.styleable.CustomRadioButton_drawableSize, 24);
+                case R.styleable.NewRadioButton_drawableSize:
+                    mDrawableSize = a.getDimensionPixelSize(R.styleable.NewRadioButton_drawableSize, 24);
                     break;
-                case R.styleable.CustomRadioButton_drawableTop:
+                case R.styleable.NewRadioButton_drawableTop:
                     drawableTop = a.getDrawable(attr);
                     break;
-                case R.styleable.CustomRadioButton_drawableBottom:
+                case R.styleable.NewRadioButton_drawableBottom:
                     drawableRight = a.getDrawable(attr);
                     break;
-                case R.styleable.CustomRadioButton_drawableRight:
+                case R.styleable.NewRadioButton_drawableRight:
                     drawableBottom = a.getDrawable(attr);
                     break;
-                case R.styleable.CustomRadioButton_drawableLeft:
+                case R.styleable.NewRadioButton_drawableLeft:
                     drawableLeft = a.getDrawable(attr);
                     break;
                 default:

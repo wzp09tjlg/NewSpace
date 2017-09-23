@@ -8,7 +8,7 @@ import android.view.ViewGroup;
 
 import com.wuzp.newspace.R;
 import com.wuzp.newspace.databinding.ItemMainBinding;
-import com.wuzp.newspace.network.entity.GirlBean;
+import com.wuzp.newspace.network.entity.GirlsBean.GirlBean;
 import com.wuzp.newspace.utils.GlideUtil;
 
 import java.util.List;

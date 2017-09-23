@@ -5,14 +5,11 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
-        <android.support.v4.view.ViewPager
-            android:id="@+id/pagers"
+        <TextView
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"/>
-
-        <include
-            android:id="@+id/layout_indicator"
-            layout="@layout/view_main_indicator" />
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:textSize="24dp"
+            android:text="3"/>
     </LinearLayout>
 </layout>
