@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <include android:id="@+id/layout_title"
+            layout="@layout/view_common_title"/>
+        <android.support.v4.widget.SwipeRefreshLayout
+            android:id="@+id/refresh"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <com.wuzp.newspace.widget.webview.NewWebView
+                android:id="@+id/web"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"></com.wuzp.newspace.widget.webview.NewWebView>
+        </android.support.v4.widget.SwipeRefreshLayout>
+    </LinearLayout>
+</layout>

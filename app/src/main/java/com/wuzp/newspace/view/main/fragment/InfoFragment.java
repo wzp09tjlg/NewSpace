@@ -1,6 +1,7 @@
 package com.wuzp.newspace.view.main.fragment;
 
 import android.graphics.Color;
+import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
@@ -15,7 +16,9 @@ import com.wuzp.newspace.databinding.FragmentInfoBinding;
 import com.wuzp.newspace.databinding.ItemInfoBinding;
 import com.wuzp.newspace.network.entity.main.InfosBean;
 import com.wuzp.newspace.network.entity.widget.TagBean;
+import com.wuzp.newspace.utils.ActivityUtil;
 import com.wuzp.newspace.utils.GlideUtil;
+import com.wuzp.newspace.view.detail.WebDetailActivity;
 import com.wuzp.newspace.widget.tag.TagView;
 import com.wuzp.newspace.widget.tag.TagViewSub;
 
@@ -64,7 +67,7 @@ public class InfoFragment extends MvpFragment<FragmentInfoBinding,InfoPresenter>
             @Override
             public void convert(BindingViewHolder holder, int position) {
                 ItemInfoBinding binding = holder.getBinding();
-                InfosBean.InfoBean bean = mData.get(position);
+                final InfosBean.InfoBean bean = mData.get(position);
                 String header = bean.getImage().startsWith("http:") || bean.getImage().startsWith("https:") ? "" : "http:";
                 String tear = bean.getImage().endsWith(".jpg") || bean.getImage().startsWith("jpeg") ? "" : ".jpg";
                 String coverUrl = header + bean.getImage() + tear;
@@ -72,6 +75,15 @@ public class InfoFragment extends MvpFragment<FragmentInfoBinding,InfoPresenter>
                 binding.textName.setText(bean.getName());
                 binding.textTime.setText(bean.getDay());
                 binding.textTitle.setText(bean.getTitle());
+                binding.getRoot().setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Bundle bundle = new Bundle();
+                        bundle.putString("TITLE",bean.getName());
+                        bundle.putString("URL",bean.getUrl());
+                        ActivityUtil.startWithBundle(mContext, WebDetailActivity.class,bundle);
+                    }
+                });
                 dividerTag(binding,bean.getAid());
             }
 

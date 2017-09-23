@@ -48,6 +48,5 @@ dependencies {
     compile rootProject.ext.support_dependencies["v4"]
     compile rootProject.ext.support_dependencies["recyclerView"]
     testCompile junit
-    //log report
-    compile project(':logreport')
+    //log report  看来是添加这个导致添加失败，去掉这个就好了，滚蛋~
 }
