@@ -10,6 +10,7 @@ import com.wuzp.newspace.adapter.MainPageAdapter;
 import com.wuzp.newspace.base.BaseFragment;
 import com.wuzp.newspace.base.NewActivity;
 import com.wuzp.newspace.databinding.ActivityMainBinding;
+import com.wuzp.newspace.network.entity.GirlsBean;
 import com.wuzp.newspace.utils.eventbus.LogEvent;
 import com.wuzp.newspace.view.main.fragment.FunFragment;
 import com.wuzp.newspace.view.main.fragment.InfoFragment;
@@ -23,7 +24,7 @@ import org.greenrobot.eventbus.ThreadMode;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends NewActivity<ActivityMainBinding,MainPresenter>{
+public class MainActivity extends NewActivity<ActivityMainBinding,MainPresenter> implements MainView {
 
     private MainPageAdapter pageAdapter;
     private List<BaseFragment> fragments = new ArrayList<>();
@@ -69,7 +70,6 @@ public class MainActivity extends NewActivity<ActivityMainBinding,MainPresenter>
 
             @Override
             public void onPageSelected(int position) {
-                index = position;
                 switch (position){
                     case 0:
                         binding.layoutIndicator.indicatorInfo.setChecked(true);
@@ -128,4 +128,8 @@ public class MainActivity extends NewActivity<ActivityMainBinding,MainPresenter>
         Log.e("abc","event:" + event.toString());
     }
 
+    @Override
+    public void setData(List<GirlsBean.GirlBean> data) {
+
+    }
 }
