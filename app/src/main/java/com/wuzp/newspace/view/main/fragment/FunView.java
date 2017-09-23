@@ -7,4 +7,5 @@ import com.wuzp.newspace.base.BaseView;
  */
 public interface FunView extends BaseView {
 
+
 }

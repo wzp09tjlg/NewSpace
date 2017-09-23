@@ -25,28 +25,29 @@ android {
 
 dependencies {
     //如果使用的gradle 3.0以下的版本 依赖三方的库的关键字是 compile 如果使用的是gradle3.0以上的版本，依赖三方库的关键字有api 和 implementation
-    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile fileTree(include: ['*.jar'], dir: 'libs')
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-
     // Network Framework
-    compile  retrofit
-    compile  converter_gson
-    compile  retrofit2_rxjava2_adapter
-    compile  okhttp_logging_interceptor
-    compile  okhttp
+    compile retrofit
+    compile converter_gson
+    compile retrofit2_rxjava2_adapter
+    compile okhttp_logging_interceptor
+    compile okhttp
     // Reactive Programming Codeing Framework
-    compile  rxandroid
-    compile  rxjava
-
+    compile rxandroid
+    compile rxjava
     //三方库
-    compile eventbus  //事件库
-    compile glide     //图片库
-
+    compile eventbus
+    //事件库
+    compile glide
+    //图片库
     //支持库
     compile rootProject.ext.support_dependencies["v7"]
     compile rootProject.ext.support_dependencies["v4"]
     compile rootProject.ext.support_dependencies["recyclerView"]
     testCompile junit
+    //log report
+    compile project(':logreport')
 }

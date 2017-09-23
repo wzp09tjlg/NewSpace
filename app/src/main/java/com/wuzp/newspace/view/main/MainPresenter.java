@@ -3,7 +3,7 @@ package com.wuzp.newspace.view.main;
 import com.wuzp.newspace.base.BasePresenter;
 import com.wuzp.newspace.network.ApiCallback;
 import com.wuzp.newspace.network.ApiError;
-import com.wuzp.newspace.network.entity.GirlsBean;
+import com.wuzp.newspace.network.entity.main.GirlsBean;
 import com.wuzp.newspace.utils.LogUtil;
 
 /**

@@ -1,10 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- Indicator的属性 -->
     <declare-styleable name="NewRadioButton">
         <attr name="drawableSize" format="dimension"/>
         <attr name="drawableTop" format="reference"/>
         <attr name="drawableLeft" format="reference"/>
         <attr name="drawableRight" format="reference"/>
         <attr name="drawableBottom" format="reference"/>
+    </declare-styleable>
+
+    <!-- TagView的属性 -->
+    <declare-styleable name="TagView">
+        <attr name="limiteLine" format="integer"/>
     </declare-styleable>
 </resources>

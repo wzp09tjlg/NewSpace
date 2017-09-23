@@ -1,4 +1,4 @@
-package com.wuzp.newspace.network.entity;
+package com.wuzp.newspace.network.entity.main;
 
 import java.util.List;
 

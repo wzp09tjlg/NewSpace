@@ -11,7 +11,7 @@ import android.view.ViewGroup;
 import com.wuzp.newspace.network.ApiCallback;
 import com.wuzp.newspace.network.ApiService;
 import com.wuzp.newspace.network.ApiStore;
-import com.wuzp.newspace.network.entity.HttpBase;
+import com.wuzp.newspace.network.entity.base.HttpBase;
 import com.wuzp.newspace.utils.LogUtil;
 
 import io.reactivex.Flowable;

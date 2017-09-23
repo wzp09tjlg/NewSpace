@@ -1,7 +1,7 @@
 package com.wuzp.newspace.view.main;
 
 import com.wuzp.newspace.base.BaseView;
-import com.wuzp.newspace.network.entity.GirlsBean.GirlBean;
+import com.wuzp.newspace.network.entity.main.GirlsBean.GirlBean;
 
 import java.util.List;
 

@@ -8,10 +8,8 @@ import android.support.v4.app.FragmentActivity;
 import com.wuzp.newspace.network.ApiCallback;
 import com.wuzp.newspace.network.ApiService;
 import com.wuzp.newspace.network.ApiStore;
-import com.wuzp.newspace.network.entity.HttpBase;
+import com.wuzp.newspace.network.entity.base.HttpBase;
 import com.wuzp.newspace.utils.LogUtil;
-
-import org.greenrobot.eventbus.EventBus;
 
 import io.reactivex.Flowable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -38,13 +36,13 @@ public class BaseActivity extends FragmentActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mContext = this;
-        EventBus.getDefault().register(this);
+        //EventBus.getDefault().register(this);//不在基类中声明EventBus 在哪儿用，在哪儿调
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        EventBus.getDefault().unregister(this);
+        //EventBus.getDefault().unregister(this);//注销同声明
     }
 
     protected final <T> void addSubscription(Flowable flowable, final ApiCallback<T> apiCallback) {

@@ -16,4 +16,8 @@ public class ApiFinal {
 
     //首页的地址
     public static final String URL_HOME = "197-1";
+
+    //资讯的地址
+    public static final String URL_HOME_INFO = "1443-1";
+
 }

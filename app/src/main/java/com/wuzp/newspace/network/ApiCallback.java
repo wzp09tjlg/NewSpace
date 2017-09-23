@@ -1,7 +1,7 @@
 package com.wuzp.newspace.network;
 
 import com.jakewharton.retrofit2.adapter.rxjava2.HttpException;
-import com.wuzp.newspace.network.entity.HttpBase;
+import com.wuzp.newspace.network.entity.base.HttpBase;
 import com.wuzp.newspace.utils.LogUtil;
 
 import java.net.ConnectException;

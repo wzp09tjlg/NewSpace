@@ -10,7 +10,7 @@ import com.wuzp.newspace.adapter.MainPageAdapter;
 import com.wuzp.newspace.base.BaseFragment;
 import com.wuzp.newspace.base.NewActivity;
 import com.wuzp.newspace.databinding.ActivityMainBinding;
-import com.wuzp.newspace.network.entity.GirlsBean;
+import com.wuzp.newspace.network.entity.main.GirlsBean;
 import com.wuzp.newspace.utils.eventbus.LogEvent;
 import com.wuzp.newspace.view.main.fragment.FunFragment;
 import com.wuzp.newspace.view.main.fragment.InfoFragment;

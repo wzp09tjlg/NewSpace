@@ -14,8 +14,8 @@ import android.view.ViewGroup;
  */
 public abstract class MvpFragment<B extends ViewDataBinding,P extends BasePresenter> extends BaseFragment {
 
-    private B binding;
-    private P presenter;
+    protected B binding;
+    protected P presenter;
 
     @Override
     public void onAttach(Context context) {
@@ -29,6 +29,7 @@ public abstract class MvpFragment<B extends ViewDataBinding,P extends BasePresen
         super.onCreateView(inflater, container, savedInstanceState);
         binding = DataBindingUtil.inflate(inflater,layoutId(),container,true);
 
+        onCreateView();
         initView();
         initData();
         return binding.getRoot();
@@ -45,6 +46,8 @@ public abstract class MvpFragment<B extends ViewDataBinding,P extends BasePresen
     protected abstract P createPresenter();
 
     protected abstract int layoutId();
+
+    protected void onCreateView(){}
 
     protected void initView(){}
 

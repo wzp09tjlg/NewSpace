@@ -16,6 +16,7 @@ import com.wuzp.newspace.base.BaseApp;
  */
 public class AppUtils {
     public static boolean isDebug = true;//是否为调试模式
+    public static boolean isOpenLogReport = true;//是否开启logreprt模式
 
     public static String channel = "";
     public static String imei = "";

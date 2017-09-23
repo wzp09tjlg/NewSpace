@@ -1,4 +1,4 @@
-package com.wuzp.newspace.network.entity;
+package com.wuzp.newspace.network.entity.base;
 
 /**
  * Created by wuzp on 2017/9/17.
