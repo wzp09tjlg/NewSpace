@@ -10,4 +10,8 @@
     <string name="news">新闻</string>
     <string name="news_ares">地区</string>
     <string name="news_dynamic">动态</string>
+    <!-- 娱乐 -->
+    <string name="fun">娱乐</string>
+    <string name="fun_joke">笑话</string>
+    <string name="fun_funny_pic">笑图</string>
 </resources>

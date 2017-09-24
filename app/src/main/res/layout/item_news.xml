@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:id="@+id/card"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/drawable_news_item">
+
+            <TextView
+                android:id="@+id/text_channel"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:gravity="center_vertical"
+                android:paddingLeft="20dp"
+                android:text="this is test Channel"
+                android:textColor="#333333"
+                android:textSize="20dp" />
+
+            <com.wuzp.newspace.widget.tag.TagView
+                android:id="@+id/tags"
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:layout_below="@+id/text_channel"
+                android:layout_marginTop="15dp"
+                android:layout_marginLeft="20dp"
+                android:layout_gravity="left"/>
+        </RelativeLayout>
+    </RelativeLayout>
+</layout>

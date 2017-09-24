@@ -47,6 +47,7 @@ dependencies {
     compile rootProject.ext.support_dependencies["v7"]
     compile rootProject.ext.support_dependencies["v4"]
     compile rootProject.ext.support_dependencies["recyclerView"]
+    compile rootProject.ext.support_dependencies["cardView"]
     testCompile junit
     //log report  看来是添加这个导致添加失败，去掉这个就好了，滚蛋~
 }
