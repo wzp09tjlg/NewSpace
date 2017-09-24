@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">NewSpace</string>
+
+    <!-- 通用字符 -->
+    <string name="common_loading">正在加载...</string>
+    <string name="common_waiting">请稍后...</string>
+
+    <!-- 其他模块字符 -->
+    <!-- 新闻 -->
+    <string name="news">新闻</string>
+    <string name="news_ares">地区</string>
+    <string name="news_dynamic">动态</string>
 </resources>

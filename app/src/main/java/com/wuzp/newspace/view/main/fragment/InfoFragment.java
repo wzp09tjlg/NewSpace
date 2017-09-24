@@ -169,6 +169,7 @@ public class InfoFragment extends MvpFragment<FragmentInfoBinding,InfoPresenter>
             }
         };
         ((FragmentInfoBinding)binding).recycler.setAdapter(infoAdapter);
+        showWaiting();
     }
 
     @Override
@@ -179,6 +180,7 @@ public class InfoFragment extends MvpFragment<FragmentInfoBinding,InfoPresenter>
             mData = data;
         }
         infoAdapter.setData(mData);
+        hideWaiting();
     }
 
 }

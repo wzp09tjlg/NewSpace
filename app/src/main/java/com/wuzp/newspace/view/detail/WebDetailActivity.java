@@ -17,6 +17,7 @@ import com.wuzp.newspace.receiver.NetworkStateReceiver;
 import com.wuzp.newspace.utils.PixelUtil;
 import com.wuzp.newspace.utils.network.NetworkUtil;
 import com.wuzp.newspace.widget.toast.Msg;
+import com.wuzp.newspace.widget.webview.NewWebView;
 
 /**
  * Created by wuzp on 2017/9/23.
@@ -53,6 +54,20 @@ public class WebDetailActivity extends NewActivity<ActivityDetailBinding,WebDeta
         binding.layoutTitle.imgTitleMenu.setVisibility(View.VISIBLE);
         binding.layoutTitle.textTitle.setText(mTitle);
 
+        initWebSetting();
+    }
+
+    @Override
+    protected void initData() {
+        super.initData();
+        binding.layoutTitle.imgTitleBack.setOnClickListener(this);
+        binding.layoutTitle.imgTitleMenu.setOnClickListener(this);
+        loadUrl();
+        showWaiting();
+    }
+
+    private void initWebSetting(){
+        binding.web.setStatusInterface(statusInterface);
         binding.web.getSettings().setJavaScriptEnabled(true);
         //        支持特殊的javascript脚本语句
         binding.web.setWebChromeClient(new WebChromeClient());
@@ -97,14 +112,6 @@ public class WebDetailActivity extends NewActivity<ActivityDetailBinding,WebDeta
         });
     }
 
-    @Override
-    protected void initData() {
-        super.initData();
-        binding.layoutTitle.imgTitleBack.setOnClickListener(this);
-        binding.layoutTitle.imgTitleMenu.setOnClickListener(this);
-        loadUrl();
-    }
-
     private void loadUrl(){
         if(!TextUtils.isEmpty(mUrl)){
             binding.web.loadUrl(mUrl);
@@ -142,6 +149,28 @@ public class WebDetailActivity extends NewActivity<ActivityDetailBinding,WebDeta
                 return;
             }
             binding.web.getSettings().setCacheMode(WebSettings.LOAD_CACHE_ELSE_NETWORK);
+        }
+    };
+
+    private NewWebView.OnWebViewStatusInterface statusInterface = new NewWebView.OnWebViewStatusInterface() {
+        @Override
+        public void onPageLoadFinished() {
+            isload = false;
+            binding.refresh.setRefreshing(false);
+            hideWaiting();
+        }
+
+        @Override
+        public void onPageStartLoad() {
+            isload = false;
+            binding.refresh.setRefreshing(false);
+        }
+
+        @Override
+        public void onPageLoadError() {
+            isload = false;
+            binding.refresh.setRefreshing(false);
+            hideWaiting();
         }
     };
 }

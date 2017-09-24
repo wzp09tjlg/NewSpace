@@ -20,4 +20,10 @@ public class ApiFinal {
     //资讯的地址
     public static final String URL_HOME_INFO = "1443-1";
 
+    //地域新闻的地址
+    public static final String URL_HOME_NEW_AREA = "109-35";
+
+    //动态新闻的地址
+    public static final String URL_HOME_NEW_DYNAMIC = "109-34";
+
 }

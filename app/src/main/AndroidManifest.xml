@@ -4,6 +4,9 @@
 
     <!-- 网络 -->
     <uses-permission android:name="android.permission.INTERNET"/>
+    <!-- 监听网络改变的权限 -->
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <!-- 读写文件 -->
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
@@ -15,7 +18,7 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/app_common">
         <!--*****************************************************-->
         <!--                       Activity                      -->
         <!--*****************************************************-->
@@ -37,7 +40,15 @@
         <!--*****************************************************-->
         <!--                       Receiver                      -->
         <!--*****************************************************-->
-         <receiver android:name=".receiver.NetworkStateReceiver"/>
+         <receiver android:name=".receiver.NetworkStateReceiver"
+             android:exported="false">
+             <intent-filter>
+                 <!-- 这是联网跟断网的广播 -->
+                 <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+                 <!-- 这是亮屏和关屏的广播 -->
+                 <action android:name="android.intent.action.USER_PRESENT" />
+             </intent-filter>
+         </receiver>
 
         <!--*****************************************************-->
         <!--                     ContentProvider                 -->

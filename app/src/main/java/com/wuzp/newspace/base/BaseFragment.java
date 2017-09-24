@@ -8,11 +8,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.wuzp.newspace.R;
 import com.wuzp.newspace.network.ApiCallback;
 import com.wuzp.newspace.network.ApiService;
 import com.wuzp.newspace.network.ApiStore;
 import com.wuzp.newspace.network.entity.base.HttpBase;
 import com.wuzp.newspace.utils.LogUtil;
+import com.wuzp.newspace.widget.dialog.PreWaitingDialog;
 
 import io.reactivex.Flowable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -31,6 +33,7 @@ public class BaseFragment extends Fragment {
     public ApiService apiService = ApiStore.getApiService();
     private CompositeDisposable mCompositeDisposable;
     protected Context mContext;
+    protected PreWaitingDialog preWaitingDialog;
 
     @Nullable
     @Override
@@ -89,4 +92,24 @@ public class BaseFragment extends Fragment {
         }
     }
 
+    //基本的等待框展示及隐藏...
+    protected PreWaitingDialog getPreWaitingDialog(){
+        if(preWaitingDialog == null){
+            preWaitingDialog = new PreWaitingDialog(mContext, R.style.dialog_common);
+        }
+        return preWaitingDialog;
+    }
+
+    protected void showWaiting(){
+        if(preWaitingDialog == null){
+            getPreWaitingDialog();
+        }
+        preWaitingDialog.show();
+    }
+
+    protected void hideWaiting(){
+        if(preWaitingDialog != null && preWaitingDialog.isShowing()){
+            preWaitingDialog.dismiss();
+        }
+    }
 }

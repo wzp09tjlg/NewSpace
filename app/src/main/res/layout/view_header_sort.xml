@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <RelativeLayout
+        android:id="@+id/layout_news_sort"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:gravity="center">
+        <RadioGroup
+            android:id="@+id/layout_tabs"
+            android:layout_width="154dp"
+            android:layout_height="31dp"
+            android:layout_centerInParent="true"
+            android:orientation="horizontal"
+            android:background="@drawable/drawable_news_sort"
+            android:padding="1dp">
+            <com.wuzp.newspace.widget.radio.NewRadioButton
+                android:id="@+id/text_area"
+                android:layout_height="29dp"
+                android:layout_width="76dp"
+                android:text="@string/news_ares"
+                android:textColor="@color/color_text_news"
+                android:textSize="13sp"
+                android:gravity="center"
+                android:clickable="true"
+                android:checked="true"/>
+            <com.wuzp.newspace.widget.radio.NewRadioButton
+                android:id="@+id/text_dynamic"
+                android:layout_width="76dp"
+                android:layout_height="29dp"
+                android:text="@string/news_dynamic"
+                android:textSize="13sp"
+                android:textColor="@color/color_text_news"
+                android:gravity="center"
+                android:clickable="true"/>
+        </RadioGroup>
+    </RelativeLayout>
+</layout>

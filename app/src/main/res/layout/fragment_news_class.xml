@@ -3,14 +3,9 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#ffffff"
         android:orientation="vertical">
-        <include android:id="@+id/layout_title"
-            layout="@layout/view_common_title"/>
-        <include android:id="@+id/layout_sort"
-            layout="@layout/view_header_sort"/>
-        <android.support.v4.view.ViewPager
-            android:id="@+id/pages_news"
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recycler_class"
             android:layout_width="match_parent"
             android:layout_height="match_parent"/>
     </LinearLayout>
