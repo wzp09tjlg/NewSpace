@@ -23,4 +23,9 @@ public class ApiFinal {
     //新闻频道的地址
     public static final String URL_HOME_NEW_CHANNEL = "109-34";
 
+    //笑话的地址
+    public static final String URL_HOME_JOKE_TEXT = "341-1";
+
+    //高效图地址
+    public static final String URL_HOME_FUNNY_PIC = "341-2";
 }

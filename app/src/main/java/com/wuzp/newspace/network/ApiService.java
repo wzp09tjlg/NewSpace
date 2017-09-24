@@ -1,6 +1,7 @@
 package com.wuzp.newspace.network;
 
 import com.wuzp.newspace.network.entity.base.HttpBase;
+import com.wuzp.newspace.network.entity.entertaiment.EntertainmentBean;
 import com.wuzp.newspace.network.entity.main.InfosBean;
 import com.wuzp.newspace.network.entity.news.NewsChannelsBean;
 
@@ -25,18 +26,13 @@ public interface ApiService {
     Flowable<HttpBase<NewsChannelsBean>> getHomeNewsChannel();
 
     //娱乐
+    //获取笑话
+    @GET(ApiFinal.URL_HOME_JOKE_TEXT)
+    Flowable<HttpBase<EntertainmentBean>> getHomeJokeText();
+    //获取趣图
+    @GET(ApiFinal.URL_HOME_JOKE_TEXT)
+    Flowable<HttpBase<EntertainmentBean>> getHomeFunnyPic();
+
     //读书
     //我的
-
-    /*******************************************/
-    // 娱乐模块的地址
-    /*******************************************/
-
-    /*******************************************/
-    // 咨询模块的地址
-    /*******************************************/
-
-    /*******************************************/
-    // 个人中心模块的地址
-    /*******************************************/
 }

@@ -8,7 +8,7 @@ import com.wuzp.newspace.adapter.MainPageAdapter;
 import com.wuzp.newspace.base.BaseFragment;
 import com.wuzp.newspace.base.MvpFragment;
 import com.wuzp.newspace.databinding.FragmentFunBinding;
-import com.wuzp.newspace.view.news.NewsClassFragment;
+import com.wuzp.newspace.view.entertaiment.JokeTextFragment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -66,10 +66,10 @@ public class FunFragment extends MvpFragment<FragmentFunBinding,FunPresenter> im
     @Override
     protected void initData() {
         super.initData();
-        NewsClassFragment fragmentArea = new NewsClassFragment();
-        NewsClassFragment fragmentDynamic = new NewsClassFragment();
-        fragmentArea.setType(NewsClassFragment.TYPE_AREA);
-        fragmentDynamic.setType(NewsClassFragment.TYPE_DYNAMIC);
+        JokeTextFragment fragmentArea = new JokeTextFragment();
+        JokeTextFragment fragmentDynamic = new JokeTextFragment();
+        fragmentArea.setType(JokeTextFragment.TYPE_AREA);
+        fragmentDynamic.setType(JokeTextFragment.TYPE_DYNAMIC);
         fragments.add(fragmentArea);
         fragments.add(fragmentDynamic);
 
