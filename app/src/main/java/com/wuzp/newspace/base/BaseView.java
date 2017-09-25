@@ -5,4 +5,6 @@ package com.wuzp.newspace.base;
  */
 
 public interface BaseView {
+
+    void error(int code,String msg);
 }

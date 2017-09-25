@@ -30,7 +30,7 @@ public interface ApiService {
     @GET(ApiFinal.URL_HOME_JOKE_TEXT)
     Flowable<HttpBase<EntertainmentBean>> getHomeJokeText();
     //获取趣图
-    @GET(ApiFinal.URL_HOME_JOKE_TEXT)
+    @GET(ApiFinal.URL_HOME_FUNNY_PIC)
     Flowable<HttpBase<EntertainmentBean>> getHomeFunnyPic();
 
     //读书

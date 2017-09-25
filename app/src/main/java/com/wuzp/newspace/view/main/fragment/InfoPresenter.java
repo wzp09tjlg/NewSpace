@@ -1,7 +1,6 @@
 package com.wuzp.newspace.view.main.fragment;
 
 import com.wuzp.newspace.base.BasePresenter;
-import com.wuzp.newspace.base.BaseView;
 import com.wuzp.newspace.network.ApiCallback;
 import com.wuzp.newspace.network.ApiError;
 import com.wuzp.newspace.network.entity.main.InfosBean;
@@ -10,9 +9,9 @@ import com.wuzp.newspace.network.entity.main.InfosBean;
  * Created by wuzp on 2017/9/23.
  */
 
-public class InfoPresenter extends BasePresenter {
+public class InfoPresenter extends BasePresenter<InfoView> {
 
-    public InfoPresenter(BaseView view){
+    public InfoPresenter(InfoView view){
         super(view);
     }
 
@@ -25,7 +24,7 @@ public class InfoPresenter extends BasePresenter {
 
             @Override
             public void onFailure(ApiError error) {
-
+               mvpView.error(error.getErrorCode(),error.getMessage());
             }
         });
     }

@@ -132,4 +132,9 @@ public class MainActivity extends NewActivity<ActivityMainBinding,MainPresenter>
     public void setData(List<GirlsBean.GirlBean> data) {
 
     }
+
+    @Override
+    public void error(int code, String msg) {
+
+    }
 }

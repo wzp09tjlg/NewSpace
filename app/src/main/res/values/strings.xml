@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">NewSpace</string>
+    <string name="app_name">新世界</string>
 
     <!-- 通用字符 -->
     <string name="common_loading">正在加载...</string>
@@ -13,5 +13,5 @@
     <!-- 娱乐 -->
     <string name="fun">娱乐</string>
     <string name="fun_joke">笑话</string>
-    <string name="fun_funny_pic">笑图</string>
+    <string name="fun_funny_pic">趣图</string>
 </resources>

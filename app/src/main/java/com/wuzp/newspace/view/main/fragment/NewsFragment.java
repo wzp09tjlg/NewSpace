@@ -13,6 +13,7 @@ import com.wuzp.newspace.adapter.CommonAdapter;
 import com.wuzp.newspace.base.MvpFragment;
 import com.wuzp.newspace.databinding.FragmentNewsBinding;
 import com.wuzp.newspace.databinding.ItemNewsBinding;
+import com.wuzp.newspace.network.ApiError;
 import com.wuzp.newspace.network.entity.news.NewsChannelsBean;
 import com.wuzp.newspace.network.entity.widget.TagBean;
 import com.wuzp.newspace.widget.tag.TagView;
@@ -158,5 +159,20 @@ public class NewsFragment extends MvpFragment<FragmentNewsBinding,NewsPresenter>
     public void setNewsChannelData(List<NewsChannelsBean.ChannelBean> data) {
         mData = data;
         newsAdapter.setData(data);
+    }
+
+    @Override
+    public void error(int code, String msg) {
+        switch (code){
+            case ApiError.S_NULL_DATA:
+                binding.layoutError.layoutError.setVisibility(View.VISIBLE);
+                binding.layoutError.layoutError.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        presenter.start();
+                    }
+                });
+                break;
+        }
     }
 }

@@ -28,4 +28,9 @@ public class UserFragment extends MvpFragment<FragmentFunBinding,FunPresenter> i
     protected void initData() {
         super.initData();
     }
+
+    @Override
+    public void error(int code, String msg) {
+
+    }
 }

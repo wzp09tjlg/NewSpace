@@ -14,6 +14,7 @@ import com.wuzp.newspace.adapter.CommonAdapter;
 import com.wuzp.newspace.base.MvpFragment;
 import com.wuzp.newspace.databinding.FragmentInfoBinding;
 import com.wuzp.newspace.databinding.ItemInfoBinding;
+import com.wuzp.newspace.network.ApiError;
 import com.wuzp.newspace.network.entity.main.InfosBean;
 import com.wuzp.newspace.network.entity.widget.TagBean;
 import com.wuzp.newspace.utils.ActivityUtil;
@@ -183,4 +184,18 @@ public class InfoFragment extends MvpFragment<FragmentInfoBinding,InfoPresenter>
         hideWaiting();
     }
 
+    @Override
+    public void error(int code, String msg) {
+       switch (code){
+           case ApiError.S_NULL_DATA:
+               binding.layoutError.layoutError.setVisibility(View.VISIBLE);
+               binding.layoutError.layoutError.setOnClickListener(new View.OnClickListener() {
+                   @Override
+                   public void onClick(View v) {
+                       presenter.start();
+                   }
+               });
+               break;
+       }
+    }
 }

@@ -5,6 +5,7 @@ import android.view.View;
 import com.wuzp.newspace.R;
 import com.wuzp.newspace.base.MvpFragment;
 import com.wuzp.newspace.databinding.FragmentReadBinding;
+import com.wuzp.newspace.network.ApiError;
 
 /**
  * Created by wuzp on 2017/9/23.
@@ -32,5 +33,19 @@ public class ReadFragment extends MvpFragment<FragmentReadBinding,FunPresenter> 
     @Override
     protected void initData() {
         super.initData();
+    }
+
+    @Override
+    public void error(int code, String msg) {
+        switch (code){
+            case ApiError.S_NULL_DATA:
+                binding.layoutError.layoutError.setVisibility(View.VISIBLE);
+                binding.layoutError.layoutError.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                    }
+                });
+                break;
+        }
     }
 }

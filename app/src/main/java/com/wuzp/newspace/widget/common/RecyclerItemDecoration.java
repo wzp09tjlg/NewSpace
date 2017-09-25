@@ -21,6 +21,14 @@ public class RecyclerItemDecoration extends RecyclerView.ItemDecoration {
         mDivider = context.getResources().getDrawable(R.drawable.drawable_item_derorate);
     }
 
+    public RecyclerItemDecoration(Context context,int drawableId){
+        try {
+            mDivider = context.getResources().getDrawable(drawableId);
+        }catch (Exception e){
+            mDivider = context.getResources().getDrawable(R.drawable.drawable_item_derorate);
+        }
+    }
+
     @Override
     public void onDraw(Canvas c, RecyclerView parent, RecyclerView.State state) {
         drawHorizontal(c, parent);

@@ -99,11 +99,27 @@ public class BaseActivity extends FragmentActivity {
         return preWaitingDialog;
     }
 
+
+    protected void showRefreshing(){
+        if(preWaitingDialog == null){
+            getPreWaitingDialog();
+        }
+        preWaitingDialog.showRefreshing();
+    }
+
+
+    protected void showLoading(){
+        if(preWaitingDialog == null){
+            getPreWaitingDialog();
+        }
+        preWaitingDialog.showLoading();
+    }
+
     protected void showWaiting(){
         if(preWaitingDialog == null){
             getPreWaitingDialog();
         }
-        preWaitingDialog.show();
+        preWaitingDialog.showLoading();
     }
 
     protected void hideWaiting(){

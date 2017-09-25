@@ -29,6 +29,8 @@ dependencies {
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
+    //jar包的引用
+
     // Network Framework
     compile retrofit
     compile converter_gson
@@ -50,4 +52,5 @@ dependencies {
     compile rootProject.ext.support_dependencies["cardView"]
     testCompile junit
     //log report  看来是添加这个导致添加失败，去掉这个就好了，滚蛋~
+    compile project(':logreport')
 }

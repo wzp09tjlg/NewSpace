@@ -8,6 +8,8 @@ import com.wuzp.newspace.adapter.MainPageAdapter;
 import com.wuzp.newspace.base.BaseFragment;
 import com.wuzp.newspace.base.MvpFragment;
 import com.wuzp.newspace.databinding.FragmentFunBinding;
+import com.wuzp.newspace.network.ApiError;
+import com.wuzp.newspace.view.entertaiment.FunnyPicFragment;
 import com.wuzp.newspace.view.entertaiment.JokeTextFragment;
 
 import java.util.ArrayList;
@@ -38,7 +40,7 @@ public class FunFragment extends MvpFragment<FragmentFunBinding,FunPresenter> im
         binding.layoutTitle.imgTitleMenu.setVisibility(View.INVISIBLE);
         binding.layoutTitle.textTitle.setText("娱乐");
 
-        binding.pagesNews.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+        binding.pagesFun.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
 
@@ -66,15 +68,13 @@ public class FunFragment extends MvpFragment<FragmentFunBinding,FunPresenter> im
     @Override
     protected void initData() {
         super.initData();
-        JokeTextFragment fragmentArea = new JokeTextFragment();
-        JokeTextFragment fragmentDynamic = new JokeTextFragment();
-        fragmentArea.setType(JokeTextFragment.TYPE_AREA);
-        fragmentDynamic.setType(JokeTextFragment.TYPE_DYNAMIC);
-        fragments.add(fragmentArea);
-        fragments.add(fragmentDynamic);
+        JokeTextFragment fragmentJoke = new JokeTextFragment();
+        FunnyPicFragment fragmentFunny = new FunnyPicFragment();
+        fragments.add(fragmentJoke);
+        fragments.add(fragmentFunny);
 
         pageAdapter = new MainPageAdapter(getFragmentManager(),fragments,null);
-        binding.pagesNews.setAdapter(pageAdapter);
+        binding.pagesFun.setAdapter(pageAdapter);
 
         binding.layoutSort.textJoke.setOnClickListener(this);
         binding.layoutSort.textFunnyPic.setOnClickListener(this);
@@ -86,18 +86,27 @@ public class FunFragment extends MvpFragment<FragmentFunBinding,FunPresenter> im
             case R.id.text_joke:
                 if(mCurrentIndex != 0){
                     mCurrentIndex = 0;
-                    binding.pagesNews.setCurrentItem(0,true);
+                    binding.pagesFun.setCurrentItem(0,true);
                     binding.layoutSort.textJoke.setChecked(true);
                 }
                 break;
             case R.id.text_funny_pic:
                 if(mCurrentIndex != 1){
                     mCurrentIndex = 1;
-                    binding.pagesNews.setCurrentItem(1,true);
+                    binding.pagesFun.setCurrentItem(1,true);
                     binding.layoutSort.textFunnyPic.setChecked(true);
                 }
                 break;
 
+        }
+    }
+
+    @Override
+    public void error(int code, String msg) {
+        switch (code){
+            case ApiError.S_NULL_DATA:
+                binding.layoutError.layoutError.setVisibility(View.VISIBLE);
+                break;
         }
     }
 }

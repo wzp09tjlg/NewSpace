@@ -132,6 +132,11 @@ public class WebDetailActivity extends NewActivity<ActivityDetailBinding,WebDeta
      }
     }
 
+    @Override
+    public void error(int code, String msg) {
+
+    }
+
     private NetChangeObserver observer = new NetChangeObserver() {
         @Override
         public void onConnect(NetworkUtil.NetType type) {

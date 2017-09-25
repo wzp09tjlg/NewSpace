@@ -24,7 +24,7 @@ public class NewsPresenter extends BasePresenter<BaseView> {
 
             @Override
             public void onFailure(ApiError error) {
-
+                mvpView.error(error.getErrorCode(),error.getMessage());
             }
         });
     }

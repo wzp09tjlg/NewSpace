@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <TextView
+            android:id="@+id/text_title"
+            android:layout_width="wrap_content"
+            android:layout_height="24dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="15dp"
+            android:gravity="center_vertical"
+            android:singleLine="true"
+            android:ellipsize="end"
+            android:text="this is title"
+            android:textSize="16dp"
+            android:textColor="#333333"/>
+        <TextView
+            android:id="@+id/text_time"
+            android:layout_width="wrap_content"
+            android:layout_height="14dp"
+            android:layout_marginTop="6dp"
+            android:layout_marginLeft="15dp"
+            android:gravity="left|center_vertical"
+            android:singleLine="true"
+            android:ellipsize="end"
+            android:textSize="11dp"
+            android:textColor="#666666"
+            android:text="网兜客户端的开路人"/>
+        <TextView
+            android:id="@+id/text_content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:layout_marginLeft="15dp"
+            android:gravity="left|center_vertical"
+            android:lineSpacingExtra="6dp"
+            android:textSize="11dp"
+            android:textColor="#707070"
+            android:maxLines="6"
+            android:ellipsize="end"
+            android:text="微博读书为新浪阅读打造的首款社交概念阅读APP，万名作家入驻，实现作者与用户交互、实体书与电子书展示的全方位阅读平台。“微博有书”作为微博官方阅读插件，为读者带来从发现好书到阅读好书的无缝衔接阅读体验。"/>
+    </LinearLayout>
+</layout>
