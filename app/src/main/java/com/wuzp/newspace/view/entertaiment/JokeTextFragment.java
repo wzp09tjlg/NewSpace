@@ -2,6 +2,7 @@ package com.wuzp.newspace.view.entertaiment;
 
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 
 import com.wuzp.newspace.R;
 import com.wuzp.newspace.adapter.BindingViewHolder;
@@ -36,12 +37,11 @@ public class JokeTextFragment extends MvpFragment<FragmentJokeTextBinding, JokeT
     @Override
     protected void initView() {
         super.initView();
+        initPreWaitingDialog();
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(mContext,LinearLayoutManager.VERTICAL,false);
         RecyclerItemDecoration itemDecoration = new RecyclerItemDecoration(mContext,R.drawable.drawable_item_divider_joke_text);
         binding.recyclerJoke.setLayoutManager(layoutManager);
         binding.recyclerJoke.addItemDecoration(itemDecoration);
-
-        presenter.start();
     }
 
     @Override
@@ -58,6 +58,8 @@ public class JokeTextFragment extends MvpFragment<FragmentJokeTextBinding, JokeT
             }
         };
         binding.recyclerJoke.setAdapter(adapter);
+        showLoading();
+        presenter.start();
     }
 
     //设置笑话数据
@@ -65,10 +67,18 @@ public class JokeTextFragment extends MvpFragment<FragmentJokeTextBinding, JokeT
     public void setJokeTextData(List<EntertainmentBean.ContentBean> data) {
         this.mData = data;
         adapter.setData(data);
+        hideWaiting();
+        hideLayoutError();
     }
 
     @Override
     public void error(int code, String msg) {
+        hideWaiting();
+    }
 
+    private void hideLayoutError(){
+        if(binding.layoutError.layoutError.getVisibility() == View.VISIBLE){
+            binding.layoutError.layoutError.setVisibility(View.INVISIBLE);
+        }
     }
 }

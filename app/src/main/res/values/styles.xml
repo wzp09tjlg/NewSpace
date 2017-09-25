@@ -25,6 +25,13 @@
         <item name="android:activityCloseExitAnimation">@anim/activity_close_out_anim</item>
     </style>
 
+    <!-- 引导页的主题 -->
+    <style name="activity_splash" parent="AppTheme">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:windowBackground">@drawable/icon_default_splash</item>
+    </style>
+
     <!-- dialog常用主题  -->
     <style name="dialog_common" parent="android:Theme.Dialog">
         <item name="android:windowFrame">@null</item>

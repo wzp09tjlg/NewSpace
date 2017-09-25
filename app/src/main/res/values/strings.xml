@@ -5,6 +5,14 @@
     <string name="common_loading">正在加载...</string>
     <string name="common_waiting">请稍后...</string>
 
+    <string name="network_connect_error">网络未连接...</string>
+    <string name="unkonw_error">未知错误</string>
+
+    <string name="data_empty">数据为空呢...</string>
+    <string name="data_error">数据错误</string>
+
+    <string name="refresh_try">（点击重试）</string>
+
     <!-- 其他模块字符 -->
     <!-- 新闻 -->
     <string name="news">新闻</string>

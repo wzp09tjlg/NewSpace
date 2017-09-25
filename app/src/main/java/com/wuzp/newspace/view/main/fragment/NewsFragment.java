@@ -44,6 +44,7 @@ public class NewsFragment extends MvpFragment<FragmentNewsBinding,NewsPresenter>
     @Override
     protected void initView() {
         super.initView();
+        initPreWaitingDialog();
         binding.layoutTitle.imgTitleBack.setVisibility(View.INVISIBLE);
         binding.layoutTitle.imgTitleMenu.setVisibility(View.INVISIBLE);
         binding.layoutTitle.textTitle.setText(R.string.news);
@@ -152,6 +153,7 @@ public class NewsFragment extends MvpFragment<FragmentNewsBinding,NewsPresenter>
             }
         };
         binding.recycler.setAdapter(newsAdapter);
+        showLoading();
         presenter.start();
     }
 
@@ -159,12 +161,15 @@ public class NewsFragment extends MvpFragment<FragmentNewsBinding,NewsPresenter>
     public void setNewsChannelData(List<NewsChannelsBean.ChannelBean> data) {
         mData = data;
         newsAdapter.setData(data);
+        hideWaiting();
+        hideLayoutError();
     }
 
     @Override
     public void error(int code, String msg) {
+        hideWaiting();
         switch (code){
-            case ApiError.S_NULL_DATA:
+            case ApiError.S_NULL_DATA://空数据
                 binding.layoutError.layoutError.setVisibility(View.VISIBLE);
                 binding.layoutError.layoutError.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -173,6 +178,22 @@ public class NewsFragment extends MvpFragment<FragmentNewsBinding,NewsPresenter>
                     }
                 });
                 break;
+            case ApiError.S_NETWORK_UNCONNECT://网络连接失败
+                binding.layoutError.layoutError.setVisibility(View.VISIBLE);
+                binding.layoutError.textError.setText(R.string.network_connect_error);
+                binding.layoutError.layoutError.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        presenter.start();
+                    }
+                });
+                break;
+        }
+    }
+
+    private void hideLayoutError(){
+        if(binding.layoutError.layoutError.getVisibility() == View.VISIBLE){
+            binding.layoutError.layoutError.setVisibility(View.INVISIBLE);
         }
     }
 }

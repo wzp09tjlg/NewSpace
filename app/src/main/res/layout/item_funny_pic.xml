@@ -33,10 +33,10 @@
             android:id="@+id/img_funny"
             android:layout_width="match_parent"
             android:layout_height="300dp"
-            android:scaleType="fitCenter"
+            android:scaleType="centerCrop"
             android:layout_marginTop="6dp"
             android:layout_marginLeft="15dp"
             android:layout_marginRight="15dp"
-            android:src="@drawable/icon_defualt_loading"/>
+            android:src="@drawable/icon_default_item"/>
     </LinearLayout>
 </layout>

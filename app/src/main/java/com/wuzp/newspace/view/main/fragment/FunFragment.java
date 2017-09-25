@@ -8,7 +8,6 @@ import com.wuzp.newspace.adapter.MainPageAdapter;
 import com.wuzp.newspace.base.BaseFragment;
 import com.wuzp.newspace.base.MvpFragment;
 import com.wuzp.newspace.databinding.FragmentFunBinding;
-import com.wuzp.newspace.network.ApiError;
 import com.wuzp.newspace.view.entertaiment.FunnyPicFragment;
 import com.wuzp.newspace.view.entertaiment.JokeTextFragment;
 
@@ -78,6 +77,7 @@ public class FunFragment extends MvpFragment<FragmentFunBinding,FunPresenter> im
 
         binding.layoutSort.textJoke.setOnClickListener(this);
         binding.layoutSort.textFunnyPic.setOnClickListener(this);
+        showLoading();
     }
 
     @Override
@@ -102,11 +102,5 @@ public class FunFragment extends MvpFragment<FragmentFunBinding,FunPresenter> im
     }
 
     @Override
-    public void error(int code, String msg) {
-        switch (code){
-            case ApiError.S_NULL_DATA:
-                binding.layoutError.layoutError.setVisibility(View.VISIBLE);
-                break;
-        }
-    }
+    public void error(int code, String msg) {}
 }

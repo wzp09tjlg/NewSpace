@@ -48,12 +48,12 @@ public class InfoFragment extends MvpFragment<FragmentInfoBinding,InfoPresenter>
     @Override
     protected void onCreateView() {
         super.onCreateView();
-        presenter.start();
     }
 
     @Override
     protected void initView() {
         super.initView();
+        initPreWaitingDialog();
         binding.layoutTitle.imgTitleBack.setVisibility(View.INVISIBLE);
         binding.layoutTitle.imgTitleMenu.setVisibility(View.INVISIBLE);
         binding.layoutTitle.textTitle.setText("资讯");
@@ -170,7 +170,8 @@ public class InfoFragment extends MvpFragment<FragmentInfoBinding,InfoPresenter>
             }
         };
         ((FragmentInfoBinding)binding).recycler.setAdapter(infoAdapter);
-        showWaiting();
+        showLoading();//竟然dismiss 不了
+        presenter.start();
     }
 
     @Override
@@ -182,13 +183,46 @@ public class InfoFragment extends MvpFragment<FragmentInfoBinding,InfoPresenter>
         }
         infoAdapter.setData(mData);
         hideWaiting();
+        hideLayoutError();
     }
 
     @Override
     public void error(int code, String msg) {
+        hideWaiting();
        switch (code){
-           case ApiError.S_NULL_DATA:
+           case ApiError.S_NULL_DATA://数据为空
                binding.layoutError.layoutError.setVisibility(View.VISIBLE);
+               binding.layoutError.textError.setText(R.string.data_empty);
+               binding.layoutError.layoutError.setOnClickListener(new View.OnClickListener() {
+                   @Override
+                   public void onClick(View v) {
+                       presenter.start();
+                   }
+               });
+               break;
+           case ApiError.S_NETWORK_UNCONNECT://网络连接失败
+               binding.layoutError.layoutError.setVisibility(View.VISIBLE);
+               binding.layoutError.textError.setText(R.string.network_connect_error);
+               binding.layoutError.layoutError.setOnClickListener(new View.OnClickListener() {
+                   @Override
+                   public void onClick(View v) {
+                       presenter.start();
+                   }
+               });
+               break;
+           case ApiError.S_UNKNOW_ERROR://未知错误
+               binding.layoutError.layoutError.setVisibility(View.VISIBLE);
+               binding.layoutError.textError.setText(R.string.unkonw_error);
+               binding.layoutError.layoutError.setOnClickListener(new View.OnClickListener() {
+                   @Override
+                   public void onClick(View v) {
+                       presenter.start();
+                   }
+               });
+               break;
+           default://默认错误
+               binding.layoutError.layoutError.setVisibility(View.VISIBLE);
+               binding.layoutError.textError.setText(R.string.unkonw_error);
                binding.layoutError.layoutError.setOnClickListener(new View.OnClickListener() {
                    @Override
                    public void onClick(View v) {
@@ -197,5 +231,11 @@ public class InfoFragment extends MvpFragment<FragmentInfoBinding,InfoPresenter>
                });
                break;
        }
+    }
+
+    private void hideLayoutError(){
+        if(binding.layoutError.layoutError.getVisibility() == View.VISIBLE){
+            binding.layoutError.layoutError.setVisibility(View.INVISIBLE);
+        }
     }
 }

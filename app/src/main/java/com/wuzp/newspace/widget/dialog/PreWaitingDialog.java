@@ -12,6 +12,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.wuzp.newspace.R;
+import com.wuzp.newspace.utils.LogUtil;
 
 /**
  * Created by wuzp on 2017/9/24.

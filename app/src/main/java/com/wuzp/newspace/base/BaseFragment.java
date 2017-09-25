@@ -92,34 +92,38 @@ public class BaseFragment extends Fragment {
         }
     }
 
+    protected void initPreWaitingDialog(){
+        setPreWaitingDialog(getPreWaitingDialog());
+    }
+
+    protected void setPreWaitingDialog(PreWaitingDialog dialog){
+        if(preWaitingDialog == null){
+            preWaitingDialog = dialog;
+        }
+    }
+
     //基本的等待框展示及隐藏...
     protected PreWaitingDialog getPreWaitingDialog(){
-        if(preWaitingDialog == null){
-            preWaitingDialog = new PreWaitingDialog(mContext, R.style.dialog_common);
-        }
-        return preWaitingDialog;
+        return new PreWaitingDialog(mContext, R.style.dialog_common);
     }
 
     protected void showRefreshing(){
-        if(preWaitingDialog == null){
-            getPreWaitingDialog();
+        if(preWaitingDialog != null){
+            preWaitingDialog.showRefreshing();
         }
-        preWaitingDialog.showRefreshing();
     }
 
 
     protected void showLoading(){
-        if(preWaitingDialog == null){
-            getPreWaitingDialog();
+        if(preWaitingDialog != null){
+            preWaitingDialog.showLoading();
         }
-        preWaitingDialog.showLoading();
     }
 
     protected void showWaiting(){
-        if(preWaitingDialog == null){
-            getPreWaitingDialog();
+        if(preWaitingDialog != null){
+            preWaitingDialog.showLoading();
         }
-        preWaitingDialog.showLoading();
     }
 
     protected void hideWaiting(){
