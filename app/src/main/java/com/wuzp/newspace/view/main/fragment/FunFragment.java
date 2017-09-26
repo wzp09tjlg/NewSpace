@@ -10,6 +10,7 @@ import com.wuzp.newspace.base.MvpFragment;
 import com.wuzp.newspace.databinding.FragmentFunBinding;
 import com.wuzp.newspace.view.entertaiment.FunnyPicFragment;
 import com.wuzp.newspace.view.entertaiment.JokeTextFragment;
+import com.wuzp.newspace.widget.dialog.PreWaitingDialog;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,6 +31,11 @@ public class FunFragment extends MvpFragment<FragmentFunBinding,FunPresenter> im
     @Override
     protected int layoutId() {
         return R.layout.fragment_fun;
+    }
+
+    @Override
+    protected PreWaitingDialog getPreWaitingDialog() {
+        return null;
     }
 
     @Override
@@ -77,7 +83,6 @@ public class FunFragment extends MvpFragment<FragmentFunBinding,FunPresenter> im
 
         binding.layoutSort.textJoke.setOnClickListener(this);
         binding.layoutSort.textFunnyPic.setOnClickListener(this);
-        showLoading();
     }
 
     @Override

@@ -5,12 +5,15 @@ import android.os.Build;
 import android.os.Environment;
 import android.os.StatFs;
 
+import com.wuzp.newspace.utils.database.StorageUtil;
+import org.mozilla.universalchardet.UniversalDetector;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.InputStream;
 
 public class FileUtils {
 
@@ -42,7 +45,6 @@ public class FileUtils {
                 }
             } catch (Exception e) {
                 e.printStackTrace();
-                // Log.e("FileUtil", "检测并创建文件 >> checkOrCreateFile e:" + e);
                 file = null;
             }
         }
@@ -269,5 +271,79 @@ public class FileUtils {
                 e.printStackTrace();
             }
         }
+    }
+
+    //将Asstes 文件下的文件拷贝到 报名下的文件夹下
+    public static File doCopy(Context mContext,String oldfilename, String newfilename) {
+        File fileParent = new File(StorageUtil.getDirByType(StorageUtil.DIR_TYPE_BOOK));
+        if (!fileParent.exists()) {
+            fileParent.mkdirs();
+        }
+        try {
+            File file = new File(fileParent, newfilename);
+            if (!file.exists()){
+                file.createNewFile();
+            }
+            InputStream ips =mContext.getResources().getAssets().open(oldfilename);
+            FileOutputStream os = new FileOutputStream(file);
+            byte[] buffer = new byte[1024 * 1024];
+            int count = 0;
+            while ((count = ips.read(buffer)) > 0) {
+                os.write(buffer, 0, count);
+            }
+            os.close();
+            ips.close();
+            return file;
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    /**
+     * 判断文件编码格式
+     * @param file
+     * @return
+     */
+    public static String getFileIncode(File file) {
+
+        if (!file.exists()) {
+            System.err.println("getFileIncode: file not exists!");
+            return null;
+        }
+
+        byte[] buf = new byte[4096];
+        FileInputStream fis = null;
+        try {
+            fis = new FileInputStream(file);
+            // (1)
+            UniversalDetector detector = new UniversalDetector(null);
+
+            // (2)
+            int nread;
+            while ((nread = fis.read(buf)) > 0 && !detector.isDone()) {
+                detector.handleData(buf, 0, nread);
+            }
+            // (3)
+            detector.dataEnd();
+
+            // (4)
+            String encoding = detector.getDetectedCharset();
+            if (encoding != null) {
+                System.out.println("Detected encoding = " + encoding);
+            } else {
+                System.out.println("No encoding detected.");
+            }
+
+            // (5)
+            detector.reset();
+            fis.close();
+            return encoding;
+        } catch (Exception e) {
+            e.printStackTrace();
+            LogUtil.i("文件识别错误");
+        }
+
+        return null;
     }
 }

@@ -16,6 +16,7 @@ import com.wuzp.newspace.databinding.ItemNewsBinding;
 import com.wuzp.newspace.network.ApiError;
 import com.wuzp.newspace.network.entity.news.NewsChannelsBean;
 import com.wuzp.newspace.network.entity.widget.TagBean;
+import com.wuzp.newspace.widget.dialog.PreWaitingDialog;
 import com.wuzp.newspace.widget.tag.TagView;
 import com.wuzp.newspace.widget.tag.TagViewSub;
 import com.wuzp.newspace.widget.toast.Msg;
@@ -28,6 +29,7 @@ import java.util.List;
  */
 @SuppressWarnings("all")
 public class NewsFragment extends MvpFragment<FragmentNewsBinding,NewsPresenter> implements NewsView {
+    private PreWaitingDialog preWaitingDialog;
     private CommonAdapter<NewsChannelsBean.ChannelBean> newsAdapter;
     private List<NewsChannelsBean.ChannelBean> mData;
 
@@ -42,9 +44,14 @@ public class NewsFragment extends MvpFragment<FragmentNewsBinding,NewsPresenter>
     }
 
     @Override
+    protected PreWaitingDialog getPreWaitingDialog() {
+        preWaitingDialog = new PreWaitingDialog(mContext,R.style.dialog_common);
+        return preWaitingDialog;
+    }
+
+    @Override
     protected void initView() {
         super.initView();
-        initPreWaitingDialog();
         binding.layoutTitle.imgTitleBack.setVisibility(View.INVISIBLE);
         binding.layoutTitle.imgTitleMenu.setVisibility(View.INVISIBLE);
         binding.layoutTitle.textTitle.setText(R.string.news);
@@ -153,7 +160,7 @@ public class NewsFragment extends MvpFragment<FragmentNewsBinding,NewsPresenter>
             }
         };
         binding.recycler.setAdapter(newsAdapter);
-        showLoading();
+        //showLoading();
         presenter.start();
     }
 

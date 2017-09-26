@@ -26,10 +26,12 @@
             android:screenOrientation="portrait"
             android:theme="@style/activity_splash">
             <intent-filter>
-            <action android:name="android.intent.action.MAIN" />
-            <category android:name="android.intent.category.LAUNCHER" />
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".view.splash.GuideActivity"
+            android:screenOrientation="portrait"/>
         <activity android:name=".view.main.MainActivity"
             android:screenOrientation="portrait">
         </activity>
@@ -56,6 +58,9 @@
         <!--*****************************************************-->
         <!--                     ContentProvider                 -->
         <!--*****************************************************-->
+        <provider
+            android:name=".database.provider.BookContentProvider"
+            android:authorities="com.wuzp.book"/>
     </application>
 
 </manifest>

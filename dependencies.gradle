@@ -52,8 +52,7 @@ ext {
     //qq_oauth = files('libs/open_sdk_r5756_lite.jar')
     //wechat_oauth = files('libs/weixin_libammsdk.jar')
     //weibo_oauth = files('libs/weiboSDKCore_3.1.2.jar')
-    htmlConvert = files('libs/commons-lang3-3.1.jar')
-    htmlConvert3_6 = files('libs/commons-lang3-3.6.jar')
+    juniversalchardet = files('libs/juniversalchardet-1.0.3.jar')
     // kotlin
     kotlin_gradle_plugin = "org.jetbrains.kotlin:kotlin-gradle-plugin:${kotlin_version}"
     kotlin = "org.jetbrains.kotlin:kotlin-stdlib-jre8:${kotlin_version}";

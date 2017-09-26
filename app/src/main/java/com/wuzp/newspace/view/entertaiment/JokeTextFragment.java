@@ -13,6 +13,7 @@ import com.wuzp.newspace.databinding.ItemJokeTextBinding;
 import com.wuzp.newspace.network.entity.entertaiment.EntertainmentBean;
 import com.wuzp.newspace.utils.HtmlUtil;
 import com.wuzp.newspace.widget.common.RecyclerItemDecoration;
+import com.wuzp.newspace.widget.dialog.PreWaitingDialog;
 
 import java.util.List;
 
@@ -21,6 +22,7 @@ import java.util.List;
  */
 @SuppressWarnings("all")
 public class JokeTextFragment extends MvpFragment<FragmentJokeTextBinding, JokeTextPresenter> implements JokeTextView {
+    private PreWaitingDialog preWaitingDialog;
     private CommonAdapter<EntertainmentBean.ContentBean> adapter;
     private List<EntertainmentBean.ContentBean> mData;
 
@@ -35,9 +37,14 @@ public class JokeTextFragment extends MvpFragment<FragmentJokeTextBinding, JokeT
     }
 
     @Override
+    protected PreWaitingDialog getPreWaitingDialog() {
+        preWaitingDialog = new PreWaitingDialog(mContext,R.style.dialog_common);
+        return preWaitingDialog;
+    }
+
+    @Override
     protected void initView() {
         super.initView();
-        initPreWaitingDialog();
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(mContext,LinearLayoutManager.VERTICAL,false);
         RecyclerItemDecoration itemDecoration = new RecyclerItemDecoration(mContext,R.drawable.drawable_item_divider_joke_text);
         binding.recyclerJoke.setLayoutManager(layoutManager);
@@ -58,7 +65,7 @@ public class JokeTextFragment extends MvpFragment<FragmentJokeTextBinding, JokeT
             }
         };
         binding.recyclerJoke.setAdapter(adapter);
-        showLoading();
+        //showLoading();
         presenter.start();
     }
 

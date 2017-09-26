@@ -13,6 +13,7 @@ import com.wuzp.newspace.databinding.ItemFunnyPicBinding;
 import com.wuzp.newspace.network.entity.entertaiment.EntertainmentBean;
 import com.wuzp.newspace.utils.GlideUtil;
 import com.wuzp.newspace.widget.common.RecyclerItemDecoration;
+import com.wuzp.newspace.widget.dialog.PreWaitingDialog;
 
 import java.util.List;
 
@@ -20,6 +21,7 @@ import java.util.List;
  * Created by wuzp on 2017/9/24.
  */
 public class FunnyPicFragment extends MvpFragment<FragmentFunnyPicBinding, FunnyPicPresenter> implements FunnyPicView {
+    private PreWaitingDialog preWaitingDialog;
     private CommonAdapter<EntertainmentBean.ContentBean> adapter;
     private List<EntertainmentBean.ContentBean> mData;
 
@@ -34,9 +36,14 @@ public class FunnyPicFragment extends MvpFragment<FragmentFunnyPicBinding, Funny
     }
 
     @Override
+    protected PreWaitingDialog getPreWaitingDialog() {
+        preWaitingDialog = new PreWaitingDialog(mContext,R.style.dialog_common);
+        return preWaitingDialog;
+    }
+
+    @Override
     protected void initView() {
         super.initView();
-        initPreWaitingDialog();
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(mContext,LinearLayoutManager.VERTICAL,false);
         RecyclerItemDecoration itemDecoration = new RecyclerItemDecoration(mContext,R.drawable.drawable_item_divider_joke_text);
         binding.recyclerFunny.setLayoutManager(layoutManager);
@@ -57,7 +64,7 @@ public class FunnyPicFragment extends MvpFragment<FragmentFunnyPicBinding, Funny
         };
         binding.recyclerFunny.setAdapter(adapter);
         presenter.start();
-        showLoading();
+        //showLoading();
     }
 
     //设置搞笑图片数据

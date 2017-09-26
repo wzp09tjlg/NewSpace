@@ -51,7 +51,7 @@ public class ApiStore {
         return mApiStores;
     }
 
-    private static Gson getGson(){
+    public static Gson getGson(){
       if(mGson == null){
           mGson = new GsonBuilder()
                   .serializeNulls()//允许序列化反序列化为null

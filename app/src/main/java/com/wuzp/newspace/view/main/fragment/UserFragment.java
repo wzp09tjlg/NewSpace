@@ -3,6 +3,7 @@ package com.wuzp.newspace.view.main.fragment;
 import com.wuzp.newspace.R;
 import com.wuzp.newspace.base.MvpFragment;
 import com.wuzp.newspace.databinding.FragmentFunBinding;
+import com.wuzp.newspace.widget.dialog.PreWaitingDialog;
 
 /**
  * Created by wuzp on 2017/9/23.
@@ -17,6 +18,11 @@ public class UserFragment extends MvpFragment<FragmentFunBinding,FunPresenter> i
     @Override
     protected int layoutId() {
         return R.layout.fragment_user;
+    }
+
+    @Override
+    protected PreWaitingDialog getPreWaitingDialog() {
+        return null;
     }
 
     @Override

@@ -9,6 +9,8 @@ import com.wuzp.newspace.R;
 import com.wuzp.newspace.base.NewActivity;
 import com.wuzp.newspace.databinding.ActivitySplashBinding;
 import com.wuzp.newspace.utils.ActivityUtil;
+import com.wuzp.newspace.utils.LogUtil;
+import com.wuzp.newspace.utils.PreferenceUtil;
 import com.wuzp.newspace.view.main.MainActivity;
 
 /**
@@ -17,6 +19,7 @@ import com.wuzp.newspace.view.main.MainActivity;
 
 public class SplashActivity extends NewActivity<ActivitySplashBinding,SplashPresenter> implements SplashView, View.OnClickListener {
     private boolean isLoading = true;
+    private boolean isFirstOpen = false;
     private LoadingTimeCounter loadingTimeCounter;
 
     @Override
@@ -32,10 +35,11 @@ public class SplashActivity extends NewActivity<ActivitySplashBinding,SplashPres
     @Override
     protected void initView() {
         super.initView();
+        isFirstOpen = PreferenceUtil.getBoolean(PreferenceUtil.COMMON_FIRST_OPEN,false);
         //设置播放加载路径
         binding.videoSplash.setVideoURI(Uri.parse("android.resource://" + getPackageName() + "/" + R.raw.girl_dance));
         //播放
-        binding.videoSplash.start();
+        //binding.videoSplash.start();//暂停播放
         //循环播放
         binding.videoSplash.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
             @Override
@@ -62,7 +66,7 @@ public class SplashActivity extends NewActivity<ActivitySplashBinding,SplashPres
     @Override
     protected void initData() {
         super.initData();
-        loadingTimeCounter = new LoadingTimeCounter(5000,1000);
+        loadingTimeCounter = new LoadingTimeCounter(2000,1000);
         loadingTimeCounter.start();
 
         binding.textLoading.setOnClickListener(this);
@@ -72,7 +76,12 @@ public class SplashActivity extends NewActivity<ActivitySplashBinding,SplashPres
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.text_loading:
-                ActivityUtil.start(mContext, MainActivity.class);
+                if(!isFirstOpen){
+                    ActivityUtil.start(mContext, GuideActivity.class);
+                }else{
+                    ActivityUtil.start(mContext, MainActivity.class);
+                }
+
                 binding.videoSplash.stopPlayback();
                 finish();
                 break;

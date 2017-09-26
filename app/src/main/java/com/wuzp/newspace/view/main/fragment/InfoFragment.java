@@ -20,6 +20,7 @@ import com.wuzp.newspace.network.entity.widget.TagBean;
 import com.wuzp.newspace.utils.ActivityUtil;
 import com.wuzp.newspace.utils.GlideUtil;
 import com.wuzp.newspace.view.detail.WebDetailActivity;
+import com.wuzp.newspace.widget.dialog.PreWaitingDialog;
 import com.wuzp.newspace.widget.tag.TagView;
 import com.wuzp.newspace.widget.tag.TagViewSub;
 
@@ -31,6 +32,8 @@ import java.util.List;
  */
 @SuppressWarnings("all")
 public class InfoFragment extends MvpFragment<FragmentInfoBinding,InfoPresenter> implements InfoView {
+
+    protected PreWaitingDialog preWaitingDialog;
 
     private List<InfosBean.InfoBean> mData = null;
     private CommonAdapter<InfosBean.InfoBean> infoAdapter;
@@ -51,9 +54,14 @@ public class InfoFragment extends MvpFragment<FragmentInfoBinding,InfoPresenter>
     }
 
     @Override
+    protected PreWaitingDialog getPreWaitingDialog() {
+        preWaitingDialog = new PreWaitingDialog(mContext,R.style.dialog_common);
+        return preWaitingDialog;
+    }
+
+    @Override
     protected void initView() {
         super.initView();
-        initPreWaitingDialog();
         binding.layoutTitle.imgTitleBack.setVisibility(View.INVISIBLE);
         binding.layoutTitle.imgTitleMenu.setVisibility(View.INVISIBLE);
         binding.layoutTitle.textTitle.setText("资讯");
@@ -170,7 +178,7 @@ public class InfoFragment extends MvpFragment<FragmentInfoBinding,InfoPresenter>
             }
         };
         ((FragmentInfoBinding)binding).recycler.setAdapter(infoAdapter);
-        showLoading();//竟然dismiss 不了
+        //showLoading();//竟然dismiss 不了
         presenter.start();
     }
 

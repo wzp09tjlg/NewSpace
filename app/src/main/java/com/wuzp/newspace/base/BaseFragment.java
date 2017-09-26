@@ -8,7 +8,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.wuzp.newspace.R;
 import com.wuzp.newspace.network.ApiCallback;
 import com.wuzp.newspace.network.ApiService;
 import com.wuzp.newspace.network.ApiStore;
@@ -27,13 +26,12 @@ import io.reactivex.schedulers.Schedulers;
 /**
  * Created by wuzp on 2017/9/23.
  */
-public class BaseFragment extends Fragment {
+public abstract class BaseFragment extends Fragment {
     private static final String TAG = BaseFragment.class.getSimpleName();
 
     public ApiService apiService = ApiStore.getApiService();
     private CompositeDisposable mCompositeDisposable;
     protected Context mContext;
-    protected PreWaitingDialog preWaitingDialog;
 
     @Nullable
     @Override
@@ -92,43 +90,31 @@ public class BaseFragment extends Fragment {
         }
     }
 
-    protected void initPreWaitingDialog(){
-        setPreWaitingDialog(getPreWaitingDialog());
-    }
-
-    protected void setPreWaitingDialog(PreWaitingDialog dialog){
-        if(preWaitingDialog == null){
-            preWaitingDialog = dialog;
-        }
-    }
-
     //基本的等待框展示及隐藏...
-    protected PreWaitingDialog getPreWaitingDialog(){
-        return new PreWaitingDialog(mContext, R.style.dialog_common);
-    }
+    protected abstract PreWaitingDialog getPreWaitingDialog();
 
     protected void showRefreshing(){
-        if(preWaitingDialog != null){
-            preWaitingDialog.showRefreshing();
+        if(getPreWaitingDialog() != null){
+            getPreWaitingDialog().showRefreshing();
         }
     }
 
 
     protected void showLoading(){
-        if(preWaitingDialog != null){
-            preWaitingDialog.showLoading();
+        if(getPreWaitingDialog() != null){
+            getPreWaitingDialog().showLoading();
         }
     }
 
     protected void showWaiting(){
-        if(preWaitingDialog != null){
-            preWaitingDialog.showLoading();
+        if(getPreWaitingDialog() != null){
+            getPreWaitingDialog().showLoading();
         }
     }
 
     protected void hideWaiting(){
-        if(preWaitingDialog != null && preWaitingDialog.isShowing()){
-            preWaitingDialog.dismiss();
+        if(getPreWaitingDialog() != null && getPreWaitingDialog().isShowing()){
+            getPreWaitingDialog().dismiss();
         }
     }
 }
