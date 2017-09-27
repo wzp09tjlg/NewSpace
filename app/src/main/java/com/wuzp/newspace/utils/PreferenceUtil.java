@@ -15,6 +15,12 @@ public class PreferenceUtil {
     /*-----------------------------------------------------*/
     public static String COMMON_FIRST_OPEN = "common_first_open";  //是否是第一次打开应用
 
+    public static String BOOK_READ_THEME = "book_read_theme";    //阅读主题
+    public static String BOOK_DAY_MODEL = "book_day_model";      //白天模式
+    public static String BOOK_CACHE_COUNT = "book_cache_count";  // 阅读页图书缓存的章节
+    public static String BOOK_CONTENT_TEXT_SIZE   = "book_content_text_size";//阅读页内容的字体大小
+
+
     /*-----------------------------------------------------*/
    /*-----------------------------------------------------*/
    /*-----------------------------------------------------*/

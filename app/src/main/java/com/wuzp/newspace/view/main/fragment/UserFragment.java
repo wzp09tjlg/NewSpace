@@ -1,18 +1,20 @@
 package com.wuzp.newspace.view.main.fragment;
 
+import android.view.View;
+
 import com.wuzp.newspace.R;
 import com.wuzp.newspace.base.MvpFragment;
-import com.wuzp.newspace.databinding.FragmentFunBinding;
+import com.wuzp.newspace.databinding.FragmentUserBinding;
 import com.wuzp.newspace.widget.dialog.PreWaitingDialog;
 
 /**
  * Created by wuzp on 2017/9/23.
  */
-public class UserFragment extends MvpFragment<FragmentFunBinding,FunPresenter> implements FunView {
+public class UserFragment extends MvpFragment<FragmentUserBinding,UserPresenter> implements UserView {
 
     @Override
-    protected FunPresenter createPresenter() {
-        return new FunPresenter(this);
+    protected UserPresenter createPresenter() {
+        return new UserPresenter(this);
     }
 
     @Override
@@ -28,6 +30,9 @@ public class UserFragment extends MvpFragment<FragmentFunBinding,FunPresenter> i
     @Override
     protected void initView() {
         super.initView();
+        binding.layoutTitle.textTitle.setText("我的");
+        binding.layoutTitle.imgTitleBack.setVisibility(View.INVISIBLE);
+        binding.layoutTitle.imgTitleMenu.setVisibility(View.INVISIBLE);
     }
 
     @Override

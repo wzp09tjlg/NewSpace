@@ -9,7 +9,6 @@ import com.wuzp.newspace.R;
 import com.wuzp.newspace.base.NewActivity;
 import com.wuzp.newspace.databinding.ActivitySplashBinding;
 import com.wuzp.newspace.utils.ActivityUtil;
-import com.wuzp.newspace.utils.LogUtil;
 import com.wuzp.newspace.utils.PreferenceUtil;
 import com.wuzp.newspace.view.main.MainActivity;
 
@@ -105,7 +104,7 @@ public class SplashActivity extends NewActivity<ActivitySplashBinding,SplashPres
             isLoading = true;
             binding.textLoading.setEnabled(false);
             binding.textLoading.setClickable(false);
-            binding.textLoading.setText("跳过(" + millisUntilFinished / 1000 + "s)");
+            binding.textLoading.setText("(" + millisUntilFinished / 1000 + "s)跳过");
         }
 
         @Override

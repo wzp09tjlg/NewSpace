@@ -51,8 +51,9 @@ ext {
     //mi_oauth = files('libs/xiaomiOauth.1.5.1.jar')
     //qq_oauth = files('libs/open_sdk_r5756_lite.jar')
     //wechat_oauth = files('libs/weixin_libammsdk.jar')
-    //weibo_oauth = files('libs/weiboSDKCore_3.1.2.jar')
+    weibo_oauth = files('libs/weiboSDKCore_3.1.2.jar')
     juniversalchardet = files('libs/juniversalchardet-1.0.3.jar')
+    commons_lang3_3 = files('libs/commons-lang3-3.1.jar')
     // kotlin
     kotlin_gradle_plugin = "org.jetbrains.kotlin:kotlin-gradle-plugin:${kotlin_version}"
     kotlin = "org.jetbrains.kotlin:kotlin-stdlib-jre8:${kotlin_version}";

@@ -127,4 +127,13 @@ public class BaseActivity extends FragmentActivity {
             preWaitingDialog.dismiss();
         }
     }
+
+    //获取屏幕宽高
+    public static int getScreenWidth() {
+        return BaseApp.gContext.getResources().getDisplayMetrics().widthPixels;
+    }
+
+    public static int getScreenHeight() {
+        return BaseApp.gContext.getResources().getDisplayMetrics().heightPixels;
+    }
 }
