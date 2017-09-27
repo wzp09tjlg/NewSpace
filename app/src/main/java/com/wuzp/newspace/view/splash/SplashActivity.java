@@ -38,7 +38,7 @@ public class SplashActivity extends NewActivity<ActivitySplashBinding,SplashPres
         //设置播放加载路径
         binding.videoSplash.setVideoURI(Uri.parse("android.resource://" + getPackageName() + "/" + R.raw.girl_dance));
         //播放
-        //binding.videoSplash.start();//暂停播放
+        binding.videoSplash.start();//暂停播放
         //循环播放
         binding.videoSplash.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
             @Override
@@ -104,13 +104,13 @@ public class SplashActivity extends NewActivity<ActivitySplashBinding,SplashPres
             isLoading = true;
             binding.textLoading.setEnabled(false);
             binding.textLoading.setClickable(false);
-            binding.textLoading.setText("(" + millisUntilFinished / 1000 + "s)跳过");
+            binding.textTime.setText("(" + millisUntilFinished / 1000 + "s)");
         }
 
         @Override
         public void onFinish() {
             isLoading = false;
-            binding.textLoading.setText("跳过");
+            binding.textTime.setText("");
             binding.textLoading.setClickable(true);
             binding.textLoading.setEnabled(true);
         }

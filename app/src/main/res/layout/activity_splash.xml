@@ -11,13 +11,24 @@
             android:layout_height="match_parent" />
 
         <TextView
-            android:id="@+id/text_loading"
-            android:layout_width="80dp"
+            android:id="@+id/text_time"
+            android:layout_width="40dp"
             android:layout_height="30dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="70dp"
+            android:gravity="center_vertical|right"
             android:textSize="16dp"
             android:textColor="#FFFFFF"
+            android:layout_marginTop="30dp" />
+        <TextView
+            android:id="@+id/text_loading"
+            android:layout_width="40dp"
+            android:layout_height="30dp"
+            android:gravity="center_vertical|right"
             android:layout_alignParentRight="true"
             android:layout_marginTop="30dp"
-            android:layout_marginRight="30dp"/>
+            android:layout_marginRight="30dp"
+            android:text="跳过"
+            android:textColor="#ffffff" />
     </RelativeLayout>
 </layout>
