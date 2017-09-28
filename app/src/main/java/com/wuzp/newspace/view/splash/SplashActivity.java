@@ -3,6 +3,7 @@ package com.wuzp.newspace.view.splash;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.CountDownTimer;
+import android.support.annotation.NonNull;
 import android.view.View;
 
 import com.wuzp.newspace.R;
@@ -10,6 +11,7 @@ import com.wuzp.newspace.base.NewActivity;
 import com.wuzp.newspace.databinding.ActivitySplashBinding;
 import com.wuzp.newspace.utils.ActivityUtil;
 import com.wuzp.newspace.utils.PreferenceUtil;
+import com.wuzp.newspace.utils.permission.CheckPermissionUtil;
 import com.wuzp.newspace.view.main.MainActivity;
 
 /**
@@ -68,7 +70,9 @@ public class SplashActivity extends NewActivity<ActivitySplashBinding,SplashPres
         loadingTimeCounter = new LoadingTimeCounter(2000,1000);
         loadingTimeCounter.start();
 
-        binding.textLoading.setOnClickListener(this);
+        if (CheckPermissionUtil.check(this)) {
+            binding.textLoading.setOnClickListener(this);
+        }
     }
 
     @Override
@@ -113,6 +117,18 @@ public class SplashActivity extends NewActivity<ActivitySplashBinding,SplashPres
             binding.textTime.setText("");
             binding.textLoading.setClickable(true);
             binding.textLoading.setEnabled(true);
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if (requestCode == CheckPermissionUtil.PERMISSION_REQUEST_CODE) {
+            if (!CheckPermissionUtil.verifyPermissions(grantResults)) {
+                CheckPermissionUtil.showMissingPermissionDialog(this);
+            } else {
+                binding.textLoading.setOnClickListener(this);
+            }
         }
     }
 }

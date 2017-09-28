@@ -70,7 +70,6 @@ public class ReadFragment extends MvpFragment<FragmentReadBinding,FunPresenter> 
     /** cursorloader方法 */
     @Override
     public Loader<Cursor> onCreateLoader(int id, Bundle args) {
-        LogUtil.e("onCreateLoader  1");
         Uri uri = Uri.parse("content://" + "com.wuzp.book/" + BookTable.TABLE_NAME);
         return new CursorLoader(getContext(), uri, BookTable.COLUMNS, WHERE_CURSOR, null, sortString);
     }

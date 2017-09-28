@@ -178,7 +178,6 @@ public class InfoFragment extends MvpFragment<FragmentInfoBinding,InfoPresenter>
             }
         };
         ((FragmentInfoBinding)binding).recycler.setAdapter(infoAdapter);
-        //showLoading();//竟然dismiss 不了
         presenter.start();
     }
 
