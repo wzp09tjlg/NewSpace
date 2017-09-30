@@ -1,5 +1,7 @@
 package com.wuzp.newspace.view.main;
 
+import android.os.Handler;
+import android.os.Message;
 import android.support.annotation.IdRes;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
@@ -135,6 +137,51 @@ public class MainActivity extends NewActivity<ActivityMainBinding,MainPresenter>
 
     @Override
     public void error(int code, String msg) {
+        binding.pagers.post(new Runnable() {
+            @Override
+            public void run() {
+                //使用Intent 有好几种方式
+                //0.直接就是一个空的Intent 然后在之后设置其他的值(Action  class 等信息)
+                //1.直接是一个Intent 这样可以方便参数的设定   //使用的场景
+                //2.参数是action
+                //3.参数是action 和 uri
+                //4.参数Context 和 class
+                //5.参数是action uri context class
+                /*
+                Intent tempIntent = null;
+                Intent intent = new Intent(tempIntent);//
+                intent = new Intent();//
+                intent = new Intent("action");
+                intent = new Intent("action","uri");
+                intent = new Intent("context","class");
+                intent = new Intent("action","uri","context","class");*/
+            }
+        });
+    }
 
+    //继承线程 重写线程方法
+    public class MyThread extends Thread{
+        //如果在子线程种吗，没有初始化looper 没有调用looper.prepare方法，
+        // 那么在创建handler时 会报 没有初始化looper.prepare
+        // 不能创建handler的错
+        //在主线程中就能创建 那是因为在主线程中 已经初始化了looper.prepare 所以不会报错
+        //看来在activity 以及fragment 中创建handler 都是在主线程中执行的
+        Handler myHandler = new Handler(){
+            //重新handlermessage 方法 进行处理消息
+            @Override
+            public void handleMessage(Message msg) {
+                super.handleMessage(msg);
+            }
+        };
+        public MyThread(){
+
+            getMainLooper()
+
+        }
+
+        @Override
+        public void run() {
+            super.run();
+        }
     }
 }
