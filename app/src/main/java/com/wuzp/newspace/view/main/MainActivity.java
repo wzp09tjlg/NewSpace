@@ -173,11 +173,7 @@ public class MainActivity extends NewActivity<ActivityMainBinding,MainPresenter>
                 super.handleMessage(msg);
             }
         };
-        public MyThread(){
-
-            getMainLooper()
-
-        }
+        public MyThread(){}
 
         @Override
         public void run() {

@@ -37,6 +37,8 @@
         </activity>
         <activity android:name=".view.detail.WebDetailActivity"
             android:screenOrientation="portrait"/>
+        <activity android:name=".view.avatar.AvatarActivity"
+            android:screenOrientation="portrait"/>
 
         <!--*****************************************************-->
         <!--                       Service                       -->
