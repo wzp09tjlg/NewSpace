@@ -2,6 +2,7 @@ package com.wuzp.newspace.base;
 
 import android.app.Application;
 import android.content.Context;
+import android.widget.Toast;
 
 import com.wuzp.newspace.database.service.DBService;
 import com.wuzp.newspace.utils.LogReportManager;
@@ -27,5 +28,7 @@ public class BaseApp extends Application {
         DBService.init(gContext);//初始化数据库
 
         LogReportManager.init(gContext);//开启本地记录崩溃日志
+
+        Toast.makeText(gContext,"this is in application ,you can toast here.het out here~~~~~~",Toast.LENGTH_LONG).show();
     }
 }
