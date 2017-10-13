@@ -1,5 +1,7 @@
 package com.wuzp.newspace.view.task;
 
+import android.view.ViewGroup;
+
 import com.wuzp.newspace.R;
 import com.wuzp.newspace.base.BasePresenter;
 import com.wuzp.newspace.base.BaseView;
@@ -26,7 +28,7 @@ public class TaskActivity extends NewActivity<ActivityTaskBinding,BasePresenter>
 
     @Override
     public void error(int code, String msg) {
-
+        ViewGroup viewGroup;
     }
 
     //对线程的学习和理解(四种线程池1.NewCacheThreadPool 2.newFixedThreadPool 3.ScheduledThreadPool  4.SingleExecutor)

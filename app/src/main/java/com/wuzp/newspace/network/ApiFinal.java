@@ -26,6 +26,9 @@ public class ApiFinal {
     //笑话的地址
     public static final String URL_HOME_JOKE_TEXT = "341-1";
 
-    //高效图地址
+    //搞笑图地址
     public static final String URL_HOME_FUNNY_PIC = "341-2";
+
+    //上传图片的地址
+    public static final String URL_UPLOAD_AVATAR = "";
 }

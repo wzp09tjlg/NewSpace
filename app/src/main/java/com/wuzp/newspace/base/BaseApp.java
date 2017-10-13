@@ -31,4 +31,6 @@ public class BaseApp extends Application {
 
         Toast.makeText(gContext,"this is in application ,you can toast here.het out here~~~~~~",Toast.LENGTH_LONG).show();
     }
+
+    //UncaughtExceptionHandler  获取没有处理的异常 重写类 方法 uncathcException 方法，然后加入到Application中
 }

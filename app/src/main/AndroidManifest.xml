@@ -40,6 +40,8 @@
             android:screenOrientation="portrait"/>
         <activity android:name=".view.avatar.AvatarActivity"
             android:screenOrientation="portrait"/>
+        <activity android:name=".view.upload.UploadActivity"
+            android:screenOrientation="portrait"/>
         <!--*****************************************************-->
         <!--                       Service                       -->
         <!--*****************************************************-->
